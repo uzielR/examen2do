@@ -16,41 +16,41 @@ mysql = MySQL(app)
 @app.route('/')
 def index():
     CC= mysql.connection.cursor()
-    CC.execute('SELECT * FROM tbFlores')
-     = CC.fetchall() 
-    print ()
-    return render_template('index.html', =)
+    CC.execute('SELECT * FROM tbflores')
+    condb_floreria= CC.fetchall() 
+    print (condb_floreria)
+    return render_template('index.html', Listaflor=condb_floreria)
 
 @app.route('/guardar',methods=['POST'])
 def guardar():
     if request.method == 'POST': 
-        =request.form['txt']
-        =request.form['txt']
-        =request.form['txt']
-        print(, , )
+        nombre=request.form['txtnombre']
+        cantidad=request.form['txtcantidad']
+        precio=request.form['txtprecio']
+        print(nombre, cantidad, precio)
 
         #conectar a la bd
         CS = mysql.connection.cursor()
-        CS.execute('INSERT INTO  (, , ) VALUES (%s, %s, %s)', ())
+        CS.execute('INSERT INTO tbflores (nombre, cantidad, precio) VALUES (%s, %s, %s)', (nombre, cantidad, precio))
 
         mysql.connection.commit()
     
-    flash('')
+    flash('la flor fue agregado correctamente')
     return redirect(url_for('index'))
 
 @app.route('/actualizar/<id>',methods=['POST'])
 def eactualizar(id):
 
     if request.method == 'POST':
-       var = request.form ['txt']
-       var= request.form ['txt']
-       var = request.form ['txt']
+       varnombre = request.form ['txtnombre']
+       varcantidad= request.form ['txtcantidad']
+       varprecio = request.form ['txtprecio']
 
        cursorAct=mysql.connection.cursor()
-       cursorAct.execute('update  set = %s, = %s, = %s where id = %s', ())
+       cursorAct.execute('update DB_floreria set nombre= %s, cantidad= %s, precio= %s where id = %s', (varnombre,varcantidad,varprecio,id))
        mysql.connection.commit()
     
-    flash(''+)
+    flash('Se actualizo el flor'+varnombre)
     return redirect(url_for('index'))
 
 

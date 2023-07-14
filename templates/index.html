@@ -22,9 +22,9 @@
 
 <form action="/guardar" method="POST">
 
-    <input type="text" name ="txtTitulo" placeholder="escribe flor">
-    <input type="text" name="txtArtista" placeholder="escribe cantidad	">
-    <input type="number" name="txtAnio" placeholder="escribe precio	">
+    <input type="text" name ="txtnombre" placeholder="escribe flor">
+    <input type="text" name="txtcantidad" placeholder="escribe cantidad	">
+    <input type="number" name="txtprecio" placeholder="escribe precio	">
 
     <button type="submit" >Guardar</button>
 
@@ -33,19 +33,19 @@
 <br>
 <br>
 <table>
-<h1>Guardar Floreria </h1>
+<h1>Guardar </h1>
  
  <thead>
    <tr>
     <td>id: </td>
-    <td>: </td>
-    <td>: </td>
-    <td>: </td>
+    <td>nombre: </td>
+    <td>cantidad: </td>
+    <td>precio: </td>
    </tr>
  </thead>
  
    <tbody>
-    {% for alb in  %}
+    {% for alb in listaFLOR %}
      <tr>
       <td>{{alb.0}} </td>
       <td>{{alb.1}} </td>
